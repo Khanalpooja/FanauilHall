@@ -6,6 +6,8 @@ Submitted by : Pooja Khanal, Joshua M Tirone
  */
 package faneuilHall;
 
+import java.util.Random;
+
 /**
 Spectator thread implementation
 **/
@@ -31,11 +33,15 @@ public class SpectatorClass implements Runnable {
     
     public void run(){
         try{
-        enter();
-        spectate();
-        leave();
+            Random rand = new Random();
+            enter();
+            Thread.sleep(rand.nextInt(1000));
+            spectate();
+            Thread.sleep(rand.nextInt(3000));
+            leave();
         }
         catch(InterruptedException ex){
+            ex.printStackTrace();
         }
         
     }

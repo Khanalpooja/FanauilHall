@@ -38,7 +38,6 @@ public class ImmigrantsClass implements Runnable{
       FeneuilHall.mutex.release(); 
     }
     
-    
     public void sitDown() throws InterruptedException{
         System.out.println(myName + "\t sat down");
     }
@@ -61,20 +60,19 @@ public class ImmigrantsClass implements Runnable{
     }
     public void run() {
         try{
-        Random rand = new Random();
-        Thread.sleep(rand.nextInt(1000));
-        enter();
-        Thread.sleep(rand.nextInt(1000));
-        checkIn();
-//        sitDown();
-//        swear();
-        
-        getCertificate();
-        Thread.sleep(rand.nextInt(1000));
-        leave();
+            Random rand = new Random();
+            Thread.sleep(rand.nextInt(1000));
+            enter();
+            Thread.sleep(rand.nextInt(1000));
+            checkIn();
+    //        sitDown();
+    //        swear();
+            getCertificate();
+            Thread.sleep(rand.nextInt(1000));
+            leave();
         }
         catch(InterruptedException ex){
-        
+            ex.printStackTrace();
         }
     }
     

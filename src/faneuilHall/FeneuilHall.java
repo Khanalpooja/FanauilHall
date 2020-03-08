@@ -22,9 +22,9 @@ public class FeneuilHall {
      */
     public static void main(String[] args) {
         
-        int noOfImmigrants = 100; // number of immigrants
-        int noOfJudges = 2; // number of judges
-        int noOfSpectators = 100 ; // number of spectators
+        int noOfImmigrants = 5; // number of immigrants
+        int noOfJudges = 5; // number of judges
+        int noOfSpectators = 3 ; // number of spectators
 
         for (int k =1; k<= noOfSpectators; k++){
             Runnable spectator = new SpectatorClass("Spectator"+k);
@@ -37,12 +37,11 @@ public class FeneuilHall {
             Thread immigrantsThread = new Thread(immigrant);  // spawn immigrant thread
             immigrantsThread.start();
         }
-        
+      
         for (int k =1; k<= noOfJudges; k++){
             Runnable judge= new JudgeClass("Judge"+k);
             Thread judgeThread = new Thread(judge);  // spawn judge thread 
             judgeThread.start();
         }
- 
     }
 }

@@ -51,13 +51,13 @@ public class JudgeClass implements Runnable {
     
     public void run() {
         try {
-        Random rand = new Random();
-        Thread.sleep(rand.nextInt(1000));
-        enter();
-        Thread.sleep(rand.nextInt(1000));
-        confirm();
-        Thread.sleep(rand.nextInt(1000));
-        leave();
+            Random rand = new Random();
+            Thread.sleep(rand.nextInt(1000));
+            enter();
+            Thread.sleep(rand.nextInt(1000));
+            confirm();
+            Thread.sleep(rand.nextInt(1000));
+            leave();
         }
         catch (InterruptedException ex) {
             ex.printStackTrace();
