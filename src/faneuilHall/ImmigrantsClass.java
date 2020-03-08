@@ -1,48 +1,42 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+Operating System (CS490) Spring 2020, FaneuilHall implementation 
+Synchronization Part II, Group 1 
+Submitted by : Pooja Khanal, Joshua M Tirone
+
  */
-package fenaulihall;
+package faneuilHall;
 import java.util.Random;
 
 /**
- *
- * @author owner
- */
+Immigrant thread implementation
+**/
 public class ImmigrantsClass implements Runnable{
-    
-    
-    
-    private String myName;   // used to distinguish threads
- 
+
+    private String myName;   // used to distinguish threads 
     
     public ImmigrantsClass(String name) {
-       
         myName = name;
-  
     }
  
     public void enter() throws InterruptedException{
-      FenauliHall.noJudge.acquire();
-      FenauliHall.mutex.acquire(); // mutex bhaneko chai one by one, count garne jasto ko lagi 
+      FeneuilHall.noJudge.acquire();
+      FeneuilHall.mutex.acquire(); 
       System.out.println(myName + "\t has entered");
-      FenauliHall.entered++ ;
-      FenauliHall.mutex.release(); 
-      FenauliHall.noJudge.release();
+      FeneuilHall.entered++ ;
+      FeneuilHall.mutex.release(); 
+      FeneuilHall.noJudge.release();
     }
     public void checkIn()throws InterruptedException{
-      FenauliHall.mutex.acquire(); // mutex bhaneko chai one by one, count garne jasto ko lagi 
+      FeneuilHall.mutex.acquire(); 
       System.out.println(myName + "\t has checked in.");
-      FenauliHall.checked++ ;
-      if (FenauliHall.entered == FenauliHall.checked){
-          synchronized(FenauliHall.allSignedIn) {
-              FenauliHall.allSignedIn.notify();
+      FeneuilHall.checked++ ;
+      if (FeneuilHall.entered == FeneuilHall.checked){
+          synchronized(FeneuilHall.allSignedIn) {
+              FeneuilHall.allSignedIn.notify();
           }
       }
-      FenauliHall.mutex.release(); 
+      FeneuilHall.mutex.release(); 
     }
-    
     
     
     public void sitDown() throws InterruptedException{
@@ -54,17 +48,16 @@ public class ImmigrantsClass implements Runnable{
     }
     
     public void getCertificate() throws InterruptedException{
-        synchronized(FenauliHall.confirmed) {
-            FenauliHall.confirmed.wait();
+        synchronized(FeneuilHall.confirmed) {
+            FeneuilHall.confirmed.wait();
         }
         System.out.println(myName + "\t got the certificate");
     }
     
     public void leave() throws InterruptedException{
-        //la bye bye taatat
-      FenauliHall.noJudge.acquire();
+      FeneuilHall.noJudge.acquire();
       System.out.println(myName+ "\t has left");
-      FenauliHall.noJudge.release();
+      FeneuilHall.noJudge.release();
     }
     public void run() {
         try{
