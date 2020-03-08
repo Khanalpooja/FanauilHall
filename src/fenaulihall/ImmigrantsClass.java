@@ -26,7 +26,7 @@ public class ImmigrantsClass implements Runnable{
     public void enter() throws InterruptedException{
       FenauliHall.noJudge.acquire();
       FenauliHall.mutex.acquire(); // mutex bhaneko chai one by one, count garne jasto ko lagi 
-      System.out.println(myName + "\t has enetered");
+      System.out.println(myName + "\t has entered");
       FenauliHall.entered++ ;
       FenauliHall.mutex.release(); 
       FenauliHall.noJudge.release();
@@ -74,7 +74,7 @@ public class ImmigrantsClass implements Runnable{
         Thread.sleep(rand.nextInt(1000));
         checkIn();
 //        sitDown();
-        swear();
+//        swear();
         
         getCertificate();
         Thread.sleep(rand.nextInt(1000));

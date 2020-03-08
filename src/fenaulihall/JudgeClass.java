@@ -23,7 +23,7 @@ public class JudgeClass implements Runnable {
 
     public void enter() throws InterruptedException{
        FenauliHall.noJudge.acquire(); // first step
-       System.out.println( myName+ "\t has enetered");
+       System.out.println( myName+ "\t has entered");
        
     }
     public void confirm() throws InterruptedException{   // critical section

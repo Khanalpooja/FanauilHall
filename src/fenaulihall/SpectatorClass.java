@@ -10,37 +10,33 @@ package fenaulihall;
  * @author owner
  */
 public class SpectatorClass implements Runnable {
-    
-    
-    
-    private int myCounter;   // each thread will have its own message counter
+
     private String myName;   // used to distinguish threads
-    private int myDelay; 
+
     
-    public SpectatorClass(String name, int delay) {
-        
-        myCounter = 0; 
+    public SpectatorClass(String name) {
+
         myName = name;
-        myDelay= delay;
+
     }
     
-    public void enter(String myName) throws InterruptedException{
+    public void enter() throws InterruptedException{
       FenauliHall.noJudge.acquire();
-      System.out.println(myName + "\t has enetered");
+      System.out.println(myName + "\t has entered");
       FenauliHall.noJudge.release();
     }
-    public void spectate(String myName){
+    public void spectate(){
         System.out.println(myName + "\t spectating");
     }
-    public void leave(String myName){
+    public void leave(){
         System.out.println(myName + "\t has left");
     }
     
     public void run(){
         try{
-        enter(myName);
-        spectate(myName);
-        leave(myName);
+        enter();
+        spectate();
+        leave();
         }
         catch(InterruptedException ex){
         }
